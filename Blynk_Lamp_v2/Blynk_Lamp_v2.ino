@@ -1,5 +1,3 @@
-// be sure to include all libraries you need! If you have any errors in
-// compiling saying you are missing a library, be sure to add it in
 #define BLYNK_PRINT Serial
 
 #define BLYNK_TEMPLATE_ID "{template_id}" //change {value} into your own (without any brackets)
@@ -11,18 +9,18 @@
 #include <BlynkSimpleEsp8266.h>
 
 // insert your own wifi domain/password and Blynk project authorization code here
-char auth[] = "{auth_token)"; //change {value} into your own (without any brackets)
+char auth[] = "{auth_token)"
 //char ssid[];
 //char pass[];
 
 //implementation lol
 const int maxLength = 30; // not necessary
-const char* KNOWN_SSID[] = {"aaaaaaaaaaa", "bbbbbbbbbb", "cccccccccccc", "dddddddddddd"}; //change values into your own 
-const char* KNOWN_PASSWORD[] = {"passaaaaaaaa", "passbbbbbbbbb", "passccccccccccc", "passdddddddddd"}; //change values into your own 
+const char* KNOWN_SSID[] = {"aaaaaaaaaaa", "bbbbbbbbbb", "cccccccccccc", "dddddddddddd"};
+const char* KNOWN_PASSWORD[] = {"passaaaaaaaa", "passbbbbbbbbb", "passccccccccccc", "passdddddddddd"};
 const int KNOWN_SSID_COUNT = sizeof(KNOWN_SSID) / sizeof(KNOWN_SSID[0]); // number of known networks
 
 const int neo = D5; // ESP8266 pin connected to Neopixel's data pin
-const int numLEDs = 12; // replace with the number of your LEDs
+const int numLEDs = 12; // number of LEDs
 Adafruit_NeoPixel strip = Adafruit_NeoPixel(numLEDs, neo, NEO_GRB + NEO_KHZ800);
 
 // initialize constants
@@ -34,9 +32,6 @@ int rbow = LOW; // variable for side buttons
 int animation = 0; // for switching animation types
 
 
-// BLYNK_WRITE(virtualPin) controls actions only if the virtual pin is activated on the app
-// "activation" just means the buttons was turned on/off or slider position changed
-// Otherwise, these actions do not occur
 BLYNK_WRITE(V0) { // V0 = power button control
   onoff = param.asInt();
   if (onoff == LOW) { // want to turn lamp off
@@ -223,8 +218,6 @@ uint32_t Wheel(byte WheelPos) {
   return strip.Color(WheelPos * 3, 255 - WheelPos * 3, 0);
 }
 
-
-//void setup() only happens once when the chip is powered on
 void setup() {
   
   // start the lamp with white blinking animations
